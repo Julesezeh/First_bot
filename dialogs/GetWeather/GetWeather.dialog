@@ -36,7 +36,8 @@
           "$kind": "Microsoft.HttpRequest",
           "$designer": {
             "id": "10qp0I"
-          }
+          },
+          "url": "http://api.openweathermap.org/data/2.5/weather?units=metric&q=${dialog.city}&appid="
         }
       ]
     }
