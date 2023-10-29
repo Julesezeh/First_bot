@@ -30,14 +30,66 @@
           "invalidPrompt": "",
           "defaultValueResponse": "",
           "property": "dialog.city",
-          "outputFormat": "=trim(this.value)"
+          "value": "=trim(this.value)"
         },
         {
           "$kind": "Microsoft.HttpRequest",
           "$designer": {
             "id": "10qp0I"
           },
-          "url": "http://api.openweathermap.org/data/2.5/weather?units=metric&q=${dialog.city}&appid="
+          "url": "http://api.openweathermap.org/data/2.5/weather?units=metric&q=${dialog.city}&appid=bd6491fc47e7542e8d74b20dbea99263",
+          "resultProperty": "dialog.api_response",
+          "method": "GET"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "23HhBB",
+            "comment": ""
+          },
+          "condition": "=dialog.api_response.statusCode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "HQEwdf"
+              },
+              "property": "dialog.weather",
+              "value": "=dialog.api_response.content.weather[0].description"
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "gGC5oR"
+              },
+              "assignments": [
+                {
+                  "property": "dialog.temp",
+                  "value": "=round(dialog.api_response.content.main.temp)"
+                },
+                {
+                  "property": "dialog.icon",
+                  "value": "=dialog.api_response.content.weather[0].icon"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "umGSXq"
+              },
+              "activity": "${SendActivity_umGSXq()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "u2A15o"
+              },
+              "activity": "${SendActivity_u2A15o()}"
+            }
+          ]
         }
       ]
     }

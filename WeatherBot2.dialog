@@ -86,6 +86,24 @@
           "activity": "${SendActivity_DidNotUnderstand()}"
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "htXRao",
+        "name": "WeatherRequested"
+      },
+      "intent": "WeatherRequested",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "CHNHIt"
+          },
+          "activityProcessed": true,
+          "dialog": "GetWeather"
+        }
+      ]
     }
   ],
   "generator": "WeatherBot2.lg",

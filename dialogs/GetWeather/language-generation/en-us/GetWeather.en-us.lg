@@ -7,3 +7,17 @@
 
 # TextInput_Prompt_mjlFEm_text()
 - Enter your city
+# SendActivity_umGSXq()
+[Activity
+    Text = ${SendActivity_umGSXq_text()}
+]
+
+# SendActivity_umGSXq_text()
+- The weather in ${dialog.city} is ${dialog.weather} and the temperature is ${dialog.temp}&deg;.
+# SendActivity_u2A15o()
+[Activity
+    Text = ${SendActivity_u2A15o_text()}
+]
+
+# SendActivity_u2A15o_text()
+- An error was encountered: ${dialog.api_response.content.message}
