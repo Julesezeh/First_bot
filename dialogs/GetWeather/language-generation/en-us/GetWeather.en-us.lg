@@ -1,0 +1,9 @@
+[import](common.lg)
+
+# TextInput_Prompt_mjlFEm()
+[Activity
+    Text = ${TextInput_Prompt_mjlFEm_text()}
+]
+
+# TextInput_Prompt_mjlFEm_text()
+- Enter your city
